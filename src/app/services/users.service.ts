@@ -9,7 +9,7 @@ export class UsersService {
 
   }
 
-  setUserInactive(user: string) {
+  setUserInactive(id: number) {
 
   }
 }

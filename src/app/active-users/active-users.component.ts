@@ -10,9 +10,11 @@ export class ActiveUsersComponent {
   @Input() users: string[];
   @Output() userSetToInactive = new EventEmitter<number>();
 
+  constructor(private usersService: UsersService) {
 
+  }
 
   onSetToInactive(id: number) {
-    this.UsersService.
+    this.usersService.setUserInactive(id);
   }
 }
