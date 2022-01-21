@@ -1,3 +1,5 @@
+import { LoggingService } from './services/logging.service';
+import { UsersService } from './services/users.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,19 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  activeUsers = ['Max', 'Anna'];
-  inactiveUsers = ['Chris', 'Manu'];
+  activeUsers = [];
+  inactiveUsers = [];
 
-  onSetToInactive(id: number) {
+  constructor(private userService: UsersService, private loggingService: LoggingService) {}
+
+  /* onSetToInactive(id: number) {
     this.inactiveUsers.push(this.activeUsers[id]);
     this.activeUsers.splice(id, 1);
+    this.loggingService.logSettingActivity();
   }
 
   onSetToActive(id: number) {
     this.activeUsers.push(this.inactiveUsers[id]);
     this.inactiveUsers.splice(id, 1);
-  }
+    this.loggingService.logSettingActivity();
+  } */
 
   ngOnInit() {
+    this.activeUsers = this.userService.activeUsers;
+    this.inactiveUsers = this.userService.inactiveUsers;
   }
 }
